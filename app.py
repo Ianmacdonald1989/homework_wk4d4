@@ -1,9 +1,9 @@
 from flask import Flask, render_template
-from controllers.tasks_controller import tasks_blueprint
+from controllers.book_controller import book_blueprint
 
 app = Flask(__name__)
 
-app.register_blueprint(tasks_blueprint)
+app.register_blueprint(book_blueprint)
 
 @app.route('/')
 def home():

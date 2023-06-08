@@ -1,10 +1,9 @@
 class Author:
 
-    def __init__(self, genre, author, completed = False,  id = None, ):
-        self.description = genre
-        self.user = author
-        self.completed = completed
+    def __init__(self, first_name, last_name, id = None):
+        self.first_name = first_name
+        self.last_name = last_name
         self.id = id
 
-    def mark_complete(self):
-        self.completed = True
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"

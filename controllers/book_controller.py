@@ -1,12 +1,18 @@
 
 from flask import Flask, render_template
 from flask import Blueprint
-from repositories import author_repository, book_repository
-from models.author import Author
+from models.books import Book
+import repositories.book_repository as book_repository
+import repositories.author_repository as author_repository
 
-author_blueprint = ("author", __name__)
+book_blueprint = Blueprint("books", __name__)
 
-@author_blueprint.route("/authors")
-def author():
-    tasks = author_repository.select_all()
-    return render_template("/authors/index.html", all_authors = author)
+@book_blueprint.route("/books")
+def book():
+    books = book_repository.select_all()
+    return render_template("/books/index.html", all_books = books)
+
+@book_blueprint.route("/books/new", methods=['GET'])
+def new_book():
+    authors = author_repository.select_all()
+    return render_template("books/new.html", all_authors = authors)
